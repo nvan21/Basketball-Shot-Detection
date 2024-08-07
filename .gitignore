@@ -1,3 +1,4 @@
+__pycache__/
 runs/
 test/
 train/
@@ -7,5 +8,6 @@ basketball_shooting/
 yolov8l.pt
 yolov8m.pt
 yolov8n.pt
-
 basketball_v2.pt
+
+!data/single_three_point.mov
