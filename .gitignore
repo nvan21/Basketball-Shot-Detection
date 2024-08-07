@@ -3,11 +3,11 @@ runs/
 test/
 train/
 valid/
-basketball_shooting/
+basketball_shooting/*
 
 yolov8l.pt
 yolov8m.pt
 yolov8n.pt
 basketball_v2.pt
 
-!data/single_three_point.mov
+!basketball_shooting/single_three_point.mov
