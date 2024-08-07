@@ -1,0 +1,13 @@
+train: E:/Basketball Shot Detection/train/images
+val: E:/Basketball Shot Detection/valid/images
+test: E:/Basketball Shot Detection/test/images
+
+nc: 1
+names: ["basketball"]
+
+roboflow:
+  workspace: biomechanics
+  project: basketball-annotation-training
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/biomechanics/basketball-annotation-training/dataset/2
