@@ -19,6 +19,22 @@ As an avid basketball enthusiast, I wanted a way to track my shooting statistics
 
 Basketball has always been a passion of mine, and I wanted a tool to objectively analyze my shooting technique. By combining my interest in sports with a desire to improve my skills in computer vision, I created this project to automate the tracking of my shooting statistics. This tool not only helps me better understand my performance but also serves as a platform to hone my skills in computer vision and machine learning.
 
+### How the Code Works
+
+This project includes several Python scripts that handle different aspects of the basketball shot tracking and prediction system. Below is an overview of how each part of the code functions:
+
+##### 'main.py'
+
+The main.py script is used to evaluate the trained model's performance. It loads the trained model, processes input data, and assesses the accuracy and effectiveness of predictions on test data. This script is essential for determining how well the model performs in real-world scenarios and fine-tuning parameters for improved accuracy.
+
+##### 'model_train.py'
+
+The model_train.py script is responsible for training the model on a labeled dataset obtained from Roboflow. This script handles data preprocessing, model configuration, and training iterations. By leveraging this [Roboflow dataset](https://universe.roboflow.com/biomechanics/basketball-annotation-training), the model learns to recognize and predict basketball shots, identifying key features and patterns that contribute to successful predictions.
+
+##### 'basketball_detection.py'
+
+The basketball_detection.py script utilizes YOLOv8l to predict bounding boxes around basketballs in video frames and generate the ball's trajectories. It processes video inputs, detects the basketball's position in each frame, and calculates its trajectory based on the bounding box data. This script is crucial for the real-time analysis and prediction of shot outcomes.
+
 ### Getting Started
 
 To get started with this project, you will need to set up the necessary dependencies and run the system on a video of basketball shots. Detailed instructions on installation and usage can be found in the sections below.

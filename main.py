@@ -17,13 +17,15 @@ scale = 0.25
 width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH) * scale)
 height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT) * scale)
 output_vid_path = "tracker_videos/single_three_point.mp4"
+save_video = True
 
 # Create basketball detector
 ball_detector = BasketballDetector(model=model, fps=fps, class_names=CLASS_NAMES)
 
 # Define the codec and create a VideoWriter object for the output video
-fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-video_writer = cv2.VideoWriter(output_vid_path, fourcc, 30, (width, height))
+if save_video:
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    video_writer = cv2.VideoWriter(output_vid_path, fourcc, 30, (width, height))
 
 while True:
     success, img = vid.read()
@@ -49,7 +51,11 @@ while True:
 
     cv2.imshow("Basketball Shot Predictor", img)
     cv2.waitKey(1)
-    video_writer.write(img)
+
+    if save_video:
+        video_writer.write(img)
 
 vid.release()
-video_writer.release()
+
+if save_video:
+    video_writer.release()
