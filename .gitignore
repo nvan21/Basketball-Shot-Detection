@@ -2,6 +2,7 @@ runs/
 test/
 train/
 valid/
+basketball_shooting/
 
 yolov8l.pt
 yolov8m.pt
