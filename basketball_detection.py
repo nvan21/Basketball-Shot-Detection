@@ -37,15 +37,21 @@ class BasketballDetector:
 
     def is_shot_going_in(self, img: np.ndarray) -> bool:
         going_in = False
-        ball_radius = 9.5 / 2
+        ball_radius = 12 / 2
         x, y, w, h = self.backboard_bbox
         rx = int(x + 27 * self.scale)
-        ry = int(y + 32 * self.scale)
+        ry = int(y + 30 * self.scale)
         rw = int(w * 18 / 72)
         rh = int(h * 5 / 42)
         x1, y1 = rx, ry
         x2, y2 = rx + rw, ry + rh
-        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 3)
+        cv2.rectangle(
+            img,
+            (int(x1 + ball_radius), y1),
+            (int(x2 - ball_radius), y2),
+            (0, 255, 0),
+            3,
+        )
 
         ball_trajectory = np.array(self.ball_trajectory)
         mask = (
@@ -55,7 +61,7 @@ class BasketballDetector:
             & (ball_trajectory[:, 1] <= y2)
         )
 
-        if mask.sum() >= 5:
+        if mask.sum() >= 15:
             going_in = True
 
         self.confidence.append(going_in)
@@ -63,8 +69,8 @@ class BasketballDetector:
 
         cv2.putText(
             img,
-            f"Going In: {(score * 100):.4f}%",
-            (600, 30),
+            f"Going In: {going_in}",
+            (550, 30),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.9,
             (255, 255, 255),

@@ -1,5 +1,7 @@
 # Basketball Shot Detection
 
+![Basketball being tracked in the air](example_shot.gif)
+
 Need a way to calculate the initial position and velocity of the ball. Since the bounding box of the ball is inside the bounding box of the person (for the most part), then
 the ball can be considered as leaving the person's hand when it first leaves the bounding box of the person. The center coordinates of the ball in that frame will be considered the initial position. The center coordinates of the ball in the frame the next time that the ball is detected will be used to calculate the intial velocity. From there, the trajectory can be plotted
 

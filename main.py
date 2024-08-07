@@ -8,7 +8,7 @@ model_path = "yolov8l.pt"
 model = YOLO(model_path)
 
 # Create video feed
-vid_path = "basketball_shooting/three_front_facing_three_point.mov"
+vid_path = "basketball_shooting/single_three_point.mov"
 vid = cv2.VideoCapture(vid_path)
 
 # Parameters
@@ -16,10 +16,14 @@ fps = 60
 scale = 0.25
 width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH) * scale)
 height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT) * scale)
-
+output_vid_path = "tracker_videos/single_three_point.mp4"
 
 # Create basketball detector
 ball_detector = BasketballDetector(model=model, fps=fps, class_names=CLASS_NAMES)
+
+# Define the codec and create a VideoWriter object for the output video
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+video_writer = cv2.VideoWriter(output_vid_path, fourcc, 30, (width, height))
 
 while True:
     success, img = vid.read()
@@ -45,3 +49,7 @@ while True:
 
     cv2.imshow("Basketball Shot Predictor", img)
     cv2.waitKey(1)
+    video_writer.write(img)
+
+vid.release()
+video_writer.release()
