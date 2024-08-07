@@ -1,7 +1,3 @@
-from ultralytics.engine.results import Results
-import cv2
-import math
-
 # fmt:off
 CLASS_NAMES = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
